@@ -5,18 +5,20 @@ const session = require('express-session');
 const flash = require('connect-flash');
 const mongoose = require("mongoose");
 const routes = require('./routes/admin');
-const Categoria = require('./models/Categoria'); // Certifique-se de que o caminho está correto
+const Categoria = require('./models/Categoria'); 
 const { Console } = require('console');
 const Post = require('./models/Post')
 const app = express();
 const port = 3000;
+const handlebars = require('handlebars');
+
 
 // Configuração da sessão
 app.use(session({
   secret: 'cursodenode',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false } // Defina como true em produção
+  cookie: { secure: false }
 }));
 
 app.use(flash());
@@ -50,8 +52,9 @@ mongoose.connect("mongodb://localhost:27017/SISTEMANODE")
     console.log("deu erro", err);
   });
 
-
-
+  handlebars.registerHelper('lowercase', function(str) {
+    return str.toLowerCase();
+  });
 
 // Rota POST para /index
 app.get('/index', (req, res) => {
@@ -89,9 +92,9 @@ app.get('/admin/addcategorias', (req, res) => {
 // Rota para adicionar novas categorias
 app.post('/admin/addcategorias', (req, res) => {
   const novaCategoria = {
-    name: req.body.name,
-    subtipo: req.body.subtipo,
-    genero: req.body.genero,
+    name: req.body.name.toLowerCase(),
+    subtipo: req.body.subtipo.toLowerCase(),
+    genero: req.body.genero.toLowerCase(),
   };
 
   // Cria uma nova instância do modelo Categoria
