@@ -1,0 +1,27 @@
+ 
+ 
+      {{#if erros}}
+          <div class="alert alert-danger">{{erros}}</div>
+        {{/if}}
+   
+ <div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 aria-placeholder="1" class="text-center mb-4"><strong>EDITAR PERFIL DO USUÁRIO</strong></h1>
+      <form action="/admin/addcategorias" method="POST">
+        <div class="mb-3">
+          <label for="name" class="form-label" ><strong>Nome do usuário:</strong></label>
+          <input type="text" name="name" id="name" class="form-control" value="{{categoria.name}}">
+        </div>
+
+        <div class="mb-3"><strong>Idade do usuário:</strong></label>
+          <input type="text" name="subtipo" id="subtipo" class="form-control" value="{{categoria.subtipo}}">
+        </div>
+     <div class="mb-3"><strong>Hierarquia do usuário:</strong></label>
+          <input type="text" name="subtipo" id="subtipo" class="form-control" value="{{categoria.hierarquia}}">
+        </div>
+        <button class="btn btn-success" type="submit">EDITAR USUÁRIO</button>
+      </form>
+    </div>
+  </div>
+</div>

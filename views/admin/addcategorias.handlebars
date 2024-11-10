@@ -1,0 +1,26 @@
+
+<h1>Lista de Games Adicionados</h1>
+<hr>
+<a href="/admin"><button class="btn btn-success">NOVO GAME</button></a>
+
+{{#if Categoria}}
+  {{#each Categoria}}
+  <div class="card mb-3">
+      <div class="card-body">
+       <h4>{{this.name}}</h4>
+        <h4>{{this.genero}}</h4>
+          <h4>{{this.subtipo}}</h4>
+          <small>data de criação: {{date}}</small><br><br>
+           <a href="/admin/editcategorias/{{_id}}"><button class="btn btn-dark mt-3"> EDITAR GAME</button></a>
+           <form action="/admin/addcategorias/delete"  method="POST">
+            <input type="hidden" name="id" value="{{_id}}">
+            <button class="btn btn-danger mt-3" data-toggle="modal" data-target="#delete-cat">Deletar</button>
+
+            </form>
+      </div>
+  </div>
+
+  {{/each}}
+{{else}}
+<h4>Nenhum game adicionado </h4> 
+{{/if}}

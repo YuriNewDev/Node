@@ -1,0 +1,23 @@
+
+
+{{#if suc_msg}}
+    <div class="alert alert-success">{{suc_msg}} </div>
+
+{{else if err_msg}}
+    <div class="alert alert-danger"> {{err_msg}}  </div>
+{{/if}}
+
+<h3>Nova Categoria</h3>
+<div class="form-group">
+   <form action="/admin/addcategorias" method="POST">
+  <label for="name">Nome da Categoria:</label>
+  <input type="text" name="name" id="name" placeholder="digite sua categoria" required>
+
+  <label for="subtipo">Subtipo da Categoria:</label>
+  <input type="text" name="subtipo" id="subtipo" placeholder="digite seu subtipo"required>
+
+  <button type="submit">Adicionar Categoria</button>
+</form>
+
+  </form>
+</div>
